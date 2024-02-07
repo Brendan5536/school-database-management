@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admission Decision</title>
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js"></script>
+</head>
+<body>
+    <button type = "button"><a href = '/applicant/'> Return to Home page </a></button>
+
+	{% if yay %}
+        <div id="confetti"></div>
+        <script>
+            var confettiSettings = {
+                target: 'confetti',
+                max: 200,
+                width: window.innerWidth,
+                height: window.innerHeight,
+            };
+            var confetti = new ConfettiGenerator(confettiSettings);
+            confetti.render();
+
+        </script>
+
+
+		<center><h1>{{ yay }}</h1></center>
+
+        <!-- <form action='/openDecision/accept/{{userid}}' method="POST"></form>
+        <button type="submit" name="accept" class="btn btn-primary"> Click Here to Become a Cabybara</button>
+      </form> -->
+      <form id="accept-form" action='/openDecision/accept' method="POST">
+        <button type="submit" name="accept" class="btn btn-primary" onclick="submitForm()">Click Here to Become a Capybara</button>
+    </form>
+    
+    <script>
+        function submitForm() {
+            document.getElementById('accept-form').submit();
+        }
+    </script>
+
+
+  
+	{% endif %}
+
+	{% if nay %}
+		<center><h1>{{ nay }}</h1></center>
+	{% endif %}
+
+</body>
+</html>

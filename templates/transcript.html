@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Transcript</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            th {
+                text-align: left;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="container-fluid text-center">
+            <h1>Transcript</h1>
+            <button onclick="history.back()" class="btn btn-secondary mt-2 mb-4">Go Back</button>
+            <br />
+            <br />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Course ID</th>
+                        <th>Department</th>
+                        <th>Course Number</th>
+                        <th>Title</th>
+                        <th>Credits</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for course in transcript.values() %}
+                        <tr>
+                            <td>{{ course.cid }}</td>
+                            <td>{{ course.dept }}</td>
+                            <td>{{ course.cnum }}</td>
+                            <td>{{ course.title }}</td>
+                            <td>{{ course.cred }}</td>
+                            <td>{{ course.fgrade }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </body>
+</html>

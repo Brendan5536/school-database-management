@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<h1>Successfully looking at user</h1>
+<body>
+    <table>
+        <tr>
+            <td>Category</td>
+            <td>Value</td>
+            <td>Proposed Change</td>
+            <td>Confirm Change</td>
+        </tr>
+        {% for column in values %}
+            <tr>
+                <td>{{column}}</td>
+                <td>{{values[column]}}</td>
+                <form action="/sysadmin/{{values['email']}}" method = 'POST'>
+                    <td>
+                        <input type="text" name="proposedChange">
+                    </td>
+                    <input type='hidden' name='columnType' value = {{column}}>
+                    <td>
+                        <input type="submit" value="Submit">
+                    </td>
+                </form>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+<h1>
+    {% with messages = get_flashed_messages() %}
+          {% if messages %}
+  
+            {% for message in messages %}
+              {{ message }}
+            {% endfor %}
+  
+          {% endif %}
+        {% endwith %}
+</h1>
+
+<button><a href="/sysadmin/manage">Back</a></button>
+</html>

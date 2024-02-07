@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>SysAdmin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container-fluid text-center">
+        <h1>Welcome, {{ session.fname }} {{session.lname}}!</h1>
+        <form action="/logout" method="POST">
+            <button type="submit" class="btn btn-outline-danger mt-2 mb-4">Logout</button>
+        </form>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-outline-primary"><a href="/sysadmin/manage" class="text-decoration-none text-reset">Manage Users</a></button>
+            <button type="button" class="btn btn-outline-primary"><a href="/sysadmin/addFaculty" class="text-decoration-none text-reset">Add Faculty</a></button>
+        </div>
+
+        <div class="mt-4">
+            <form action="/transcriptSearch" method="POST" class="form-inline">
+                <input type="text" minlength="8" maxlength="8" name="userID" required class="form-control mr-sm-2" placeholder="User ID">
+                <button type="submit" class="btn btn-primary my-2 my-sm-0">User ID Search</button>
+            </form>
+
+            <form action="/transcriptSearch" method="POST" class="form-inline mt-2">
+                <input type="text" name="lname" required class="form-control mr-sm-2" placeholder="Last Name">
+                <button type="submit" class="btn btn-primary my-2 my-sm-0">Last Name Search</button>
+            </form>
+        </div>
+
+        <div class="mt-4">
+            <form action="/createUser" method="GET">
+                <button type="submit" class="btn btn-success">Create User</button>
+            </form>
+
+            <form method="GET" action="/staff_info" class="mt-2">
+                <button type="submit" class="btn btn-secondary">View Personal Information</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html> 

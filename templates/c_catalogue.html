@@ -1,0 +1,51 @@
+<html>
+
+<body>
+    <h1>Course Catalogue</h1>
+    <a href = '/student'><button>Home</button></a>
+    {% if search == 1 %}
+        <a href='/c_catalogue'><button>Catalogue</button></a>
+    {% endif %}
+    <br />
+    <br />
+    <form action = "/c_catalogue" method = 'POST'>
+        <label>Search by Course ID: </label>
+        <input type = 'number' value = 'cid' name = 'cid' min = 1 max = 7000>
+        <input type = 'submit' value = 'search'>
+    </form>
+    <br/>
+    {% if catalogue == NULL %}
+        <h3>Nothing in Catalogue yet</h3>
+    {% else %}
+        <table>
+        <tr>
+            <th>CourseID</th>
+            <th>DEPT</th>
+            <th>Course Number</th>
+            <th>Title</th>
+            <th>Credit Hour</th>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Prerequisite 1</th>
+            <th>Prerequisite 2</th>
+            <th>Instructor Name </th>
+        </tr>
+        {% for course in catalogue%}
+            <tr>
+                <th>{{catalogue[course]['cid']}}</th>
+                <th>{{catalogue[course]['dept']}}</th>
+                <th>{{catalogue[course]['cnum']}}</th>
+                <th>{{catalogue[course]['title']}}</th>
+                <th>{{catalogue[course]['cred']}}</th>
+                <th>{{catalogue[course]['cDay']}}</th>
+                <th>{{catalogue[course]['cTime']}}</th>
+                <th>{{catalogue[course]['prone']}}</th>
+                <th>{{catalogue[course]['prtwo']}}</th>
+                <th>{{catalogue[course]['ins_name']}}</th>
+                <th><a href = '/register/{{catalogue[course]['cid']}}'><button>Register</button></a></th>
+            </tr>
+        {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

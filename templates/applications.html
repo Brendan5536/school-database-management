@@ -1,0 +1,26 @@
+<!-- this is where users will be able to view and edit applications and check their status.  -->
+
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <h1>View Applications:</h1>
+  </head>
+
+  <body>
+
+{% for i in result %}
+<p> ID: {{i["IDapp"]}} Status: Not Approved</p>
+<button>Edit</button>
+<ul>
+    <li>GRE Included:{{i["GREIncluded"]}}</li>
+    <li>Transcript Recieved: {{i["transcriptRecieved"]}}</li>
+    <li>Reference 1 Recieved: {{i["reference1Recieved"]}}</li>
+    <li>Reference 2 Recieved: {{i["reference2Recieved"]}}</li>
+    <li>Review 1 Recieved: {{i["review1recieved"]}}</li>
+    <li>Review 2 Recieved: {{i["review2recieved"]}}</li>
+    <li>Final Decision decided: {{i["finaldecisionrecieved"]}}</li>
+</ul>
+
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View Graduation Applications</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<h1 class="my-3">Graduation Applications</h1>
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Student ID</th>
+					<th>Graduating Degree</th>
+					<th>Application Date</th>
+					<th>Graduating Status</th>
+					<th>Thesis</th>
+					<th>Backend Approved?</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for grad_application in grad_applications %}
+					<tr>
+						<td>{{ grad_application['student_id'] }}</td>
+						<td>{{ grad_application['graduating_degree'] }}</td>
+						<td>{{ grad_application['application_date'] }}</td>
+						<td>{{ grad_application['graduating_status'] }}</td>
+						<td>{{ grad_application['thesis'] }}</td>
+						<td>{{ 'Yes' if grad_application['met_requirements'] else 'No' }}</td>
+						<td><a class="btn btn-primary" href="/approve-grad-application/{{ grad_application['student_id'] }}">Approve</a></td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<!-- Bootstrap JS and jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

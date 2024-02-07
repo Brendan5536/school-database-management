@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Masters Application</h1>
+        <form action="/applicant" method = 'GET'>
+            <button>Back</button>
+        </form>
+    
+      <!-- {% if error %}
+        <p class=error><strong>Error: {{error}}</strong></p>
+      {% endif %}
+      <div class="container"> -->
+        
+      <form action='/applications/new/masters/' method = 'POST'>
+        <br>Referencer 1 First Name: <input type="text" placeholder="Referencer 1 First Name" name="ref1fname">
+        <br>Referencer 1 Last Name:<input type="text" placeholder="Referencer 1 Last Name" name="ref1lname">
+        <br>Referncer 1 Email:<input type="text" placeholder="Referencer 1 Email" name="ref1email">
+        <br>Referencer 1 Title:<input type="text" placeholder="Referencer 1 Title" name="ref1title">
+        <br>Referencer 1 Affiliation:<input type="text" placeholder="Referencer 1 Affiliation" name="ref1aff">
+
+        <br>Referencer 2 First Name:<input type="text" placeholder="Referencer 2 First Name" name="ref2fname">
+        <br>Referencer 2 Last Name: <input type="text" placeholder="Referencer 2 Last Name" name="ref2lname">
+        <br>Referencer 2 Email:<input type="text" placeholder="Referencer 2 Email" name="ref2email">
+        <br>Referencer 2 Title:<input type="text" placeholder="Referencer 2 Title" name="ref2title">
+        <br>Referencer 2 Affiliation:<input type="text" placeholder="Referencer 2 Affiliation" name="ref2aff">
+
+        <br>Referencer 3 First Name:<input type="text" placeholder="Referencer 3 First Name" name="ref3fname">
+        <br>Referencer 3 Last Name:<input type="text" placeholder="Referencer 3 Last Name" name="ref3lname">
+        <br>Referencer 3 Email:<input type="text" placeholder="Referencer 3 Email" name="ref3email">
+        <br>Referencer 3 Title:<input type="text" placeholder="Referencer 3 Title" name="ref3title">
+        <br>Referencer 3 Affiliation:<input type="text" placeholder="Referencer 3 Affiliation" name="ref3aff">
+        <!-- <input type="text" placeholder="User Type" name="utype"> THIS NEEDS TO TURN INTO A CHOICE OF RECOMMENDER OR APPLICANT -->
+        
+        <br><label for="gre">GRE Score: </label>
+        <br><input type="number" id="gre" name="gre" min="260" max="340" step="1"></br>
+        
+        <br>Verbal:<label for = "verbal":></label> 
+        <input type = "number" id = "verbal" name = "verbal" min = "130" max = "170"></br>
+
+        <br>Quantitative:<label for = "quantitative":></label> 
+        <input type = "number" id = "quantitative" name = "quantitative" min = "130" max = "170"></br>
+
+        <br>GRE Advance Score:<label for = "GREAdvScore":></label> 
+        <input type = "number" id = "GREAdvScore" name = "GREAdvScore" min = "260" max = "340"></br>
+
+        <br>GRE Advance Subject:<label for = "GREAdvSbj":></label> 
+        <input type = "text" id = "GREAdvSbj" name = "GREAdvSbj" ></br>
+
+        <br>TOEFL:<label for = "TOEFL":></label> 
+        <input type = "number" id = "TOEFL" name = "TOEFL" min = "0" max = "120"></br>
+
+        <br>TOEFL Date:<label for = "TOEFLDate":></label> 
+        <input type = "number" id = "TOEFLDate" name = "TOEFLDate" min = "1950" max = "2023"  ></br>
+        
+        <br>GRE Exam Year:<label for = "examYear":></label> 
+        <input type = "number" id = "examYear" name = "examYear" min = "1950" max = "2023" ></br>
+
+        <!-- Bachelors Info -->
+        <br>Bachelors GPA:<label for = "bGPA":></label> 
+        <input type = "number" id = "bGPA" name = "bGPA" step = "0.01" min = 0.0 max = 4.0></br>
+        
+        <br>Bachelors Major:<label for = "bMajor":></label> 
+        <input type = "text" id = "bMajor" name = "bMajor" ></br>
+
+        <br>Bachelors Graduation Year:<label for = "bPriorYear":></label> 
+        <input type = "number" id = "bPriorYear" name = "bPriorYear" min = "1950" max = "2023" ></br>
+
+        <br>Bachelors University:<label for = "bUni":></label> 
+        <input type = "text" id = "bUni" name = "bUni"  ></br>
+
+        <br><label for = "sendTranscript">Send Transcript: </label>
+        <select name = "sendTranscript" id="sendTranscript">
+        <option value = "mail"> By Mail</option>
+        <option value = "email">By Email</option>
+        </select>
+
+        <!-- this will need to be replaced at some point with the gre addition -->
+        <br>Prior Work Experience(500 chars):<input type="text" placeholder="Please use this area to briefly describe your prior work experience" name="priorworkexperience">
+        
+        <br>Interests:<input type="text" placeholder="Interests (500 chars)" name="interest">
+    
+        <br><label for="admissionyr">Select Year:</label>
+        <input type="number" id="admissionyr" name="admissionyr" min="2023" max="2123" step="1" value = "2023"><br>
+    
+    
+        <br><label for="admissionsem">Select Semester:</label><br>
+          <select name="admissionsem" id="admissionsem">
+              <option value="Fall">Fall</option>
+              <option value="Spring">Spring</option>
+          </select>
+    
+        <input type="reset" value="Clear Forms"> 
+        <button name="Next" id="nextpart" >Submit</button>
+        </form>
+    
+      </div>
+    </body>
+</html>
+    
+    
+    

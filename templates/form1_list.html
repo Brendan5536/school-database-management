@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List of Form1s</title>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>List of Form1s</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Course List:</th>
+                            <th>IsApproved</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for form1 in form1s %}
+                        <tr>
+                            <td>{{ form1[0] }}</td>
+                            <td>{{ form1[1] }}</td>
+                            <td>{{ form1[2] }}</td>
+                            <td>
+                                <form method="post" action="/update_is_approved">
+                                    <input type="hidden" name="form1_id" value="{{ form1[0] }}">
+                                    <input type="hidden" name="is_approved" value="{{ not form1[2] }}">
+                                    <input class="btn btn-primary" type="submit" value="{% if form1[2] %}Disapprove{% else %}Approve{% endif %}">
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Add jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

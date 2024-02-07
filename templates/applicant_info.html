@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Applicant Information</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-5">Applicant Information</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <table>
+                    <tr>
+                        <th>First Name</th>
+                        <td>{{ fname }}</td>
+                    </tr>
+                    <tr>
+                        <th>Last Name</th>
+                        <td>{{ lname }}</td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td>{{ primaryAddress }}</td>
+                        <td><button onclick="showUpdateAddress()" class="btn btn-secondary">Update Address</button></td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ email }}</td>
+                        <td><button onclick="showUpdateEmail()" class="btn btn-secondary">Update Email</button></td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>{{ primaryphone }}</td>
+                        <td><button onclick="showUpdatePhone()" class="btn btn-secondary">Update Phone Number</button></td>
+                    </tr>
+                    <tr>
+                        <th>SSN</th>
+                        <td>{{ SSN }}</td>
+                    </tr>
+                    <tr>
+                        <th>Program</th>
+                        <td>{{ program }}</td>
+                    </tr>
+                </table>
+
+                <div id="updateAddressForm" style="display: none;" class="mt-3">
+                    <form action="{{ url_for('applicant_update_address') }}" method="POST">
+                        <div class="form-group">
+                            <label for="primaryAddress">New Address:</label>
+                            <input type="text" id="primaryAddress" name="primaryAddress" value="{{ primaryAddress }}" required class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Address</button>
+                    </form>
+                </div>
+
+                <div id="updateEmailForm" style="display: none;" class="mt-3">
+                    <form action="{{ url_for('applicant_email_update') }}" method="POST">
+                        <div class="form-group">
+                            <label for="email">New Email:</label>
+                            <input type="text" id="email" name="email" value="{{ email }}" required class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Email</button>
+                    </form>
+                </div>
+
+                <div id="updatePhoneForm" style="display: none;" class="mt-3">
+                    <form action="{{ url_for('applicant_phone_update') }}" method="POST">
+                        <div class="form-group">
+                            <label for="primaryphone">New Phone Number:</label>
+                            <input type="text" id="primaryphone" name="primaryphone" value="{{ primaryphone }}" required                        class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Phone</button>
+                    </form>
+                </div>
+
+                <div class="mt-5">
+                    <a href="/applicant/" class="btn btn-secondary">Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        function showUpdateAddress() {
+            document.getElementById("updateAddressForm").style.display = "block";
+        }
+
+        function showUpdateEmail() {
+            document.getElementById("updateEmailForm").style.display = "block";
+        }
+
+        function showUpdatePhone() {
+            document.getElementById("updatePhoneForm").style.display = "block";
+        }
+    </script>
+</body>
+</html>

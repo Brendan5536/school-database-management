@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Faculty Member</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-fluid text-center">
+        <h1>Add Faculty Member</h1>
+        <form action='/sysadmin/addFaculty' method='POST'>
+            <table class="table table-bordered">
+                <tr>
+                    <td>First Name</td>
+                    <td><input type="text" name="fname" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><input type="text" name="lname" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="text" name="email" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="password" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>User Type</td>
+                    <td><input type="text" name="usertype" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Primary Address</td>
+                    <td><input type="text" name="primaryaddress" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Primary Phone</td>
+                    <td><input type="text" name="primaryphone" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>SSN</td>
+                    <td><input type="text" name="ssn" class="form-control"></td>
+                </tr>
+            </table>
+
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary">
+                <a href="/sysadmin" class="btn btn-secondary">Return home</a>
+            </div>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+
+        {% for message in messages %}
+        <div class="alert alert-info">{{ message }}</div>
+        {% endfor %}
+
+        {% endif %}
+        {% endwith %}
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

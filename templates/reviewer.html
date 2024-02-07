@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<body>
+    {% if 'userID' in session%}
+    
+    {% if error %}
+    <p class=error><strong>Error: {{error}}</strong></p>
+    {% endif %}
+
+    
+    <p>Name: {{lname}}, {{fn}}</p>
+    <p>Student Number: {{studentNum}} </p>
+    <p>Student Application ID: {{appID}}</p>
+    <p>Semester and Year of Application: {{sem}} {{appYear}} </p>
+    <p>Applying for Degree(0 for masters, 1 for PHD): {{degreeSought}}</p>
+    <br>
+    <p>Summary of Credentials</p>
+    <p>GRE  Verbal:{{Verbal}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantitative:{{Quantitative}} </p>
+    <p>Year of Exam:{{examYear}} </p>
+    <p>GRE Score:{{GREScore}}&nbsp;&nbsp;  GRE Advanced Score: {{GREAdvScore}} &nbsp;&nbsp;   Subject: {{GREAdvSbj}}   </p>
+    <p>TOEFL Score:{{TOEFL}}&nbsp;&nbsp;         Date of Exam:{{TOEFLDate}}    </p>
+    <br>
+    <p>Prior Degrees</p>
+    <p>MS: {{mDegree}} &nbsp;&nbsp;     GPA:{{mGPA}}  &nbsp;&nbsp;      Major: {{mMajor}}  &nbsp;&nbsp;    Year:{{mPriorYear}}  &nbsp;&nbsp;   University:{{mUni}}   </p>
+    <p>BS/BA: {{bDegree}} &nbsp;&nbsp;  GPA:{{GPA}}  &nbsp;&nbsp;     Major: {{major}}  &nbsp;&nbsp;   Year:{{priorYear}}  &nbsp;&nbsp;  University: {{uni}}  </p>
+    <p>Areas of Interest: {{interests}}</p>
+    <p>Experience: {{experience}} </p>
+   
+    <!-- rec letters and info about recommender goes here -->
+    <p>Referencer 1: {{ref1fname}} {{ref1lname}}</p>
+    <p>Title: {{ref1title}}  &nbsp;&nbsp;      Affiliation: {{ref1aff}}</p>
+    <p>Referencer 1 letter: {{ref1letter}}</p>
+
+    <p>Referencer 2: {{ref2fname}} {{ref2lname}}</p>
+    <p>Title: {{ref2title}} &nbsp;&nbsp;       Affiliation: {{ref2aff}}</p>
+    <p>Referencer 2 letter: {{ref2letter}}</p>
+
+    <p>Referencer 3: {{ref3fname}} {{ref3lname}}</p>
+    <p>Title: {{ref3title}}  &nbsp;&nbsp;      Affiliation: {{ref3aff}}</p>
+    <p>Referencer 3 letter: {{ref3letter}}</p>
+
+    Review Form:
+    <form action='/faculty/applications/{{appID}}' method = 'POST'>
+        <!-- <p>ID Application:<input type="text" placeholder="ID Application" name="IDA"></p> -->
+        <p>Reviewer ID:<input type="text" placeholder="Reviewer ID" name="reviewerID"></p>
+        <p>Reviewer Name:<input type="text" placeholder="Reviewer Name" name="reviewerName"></p>
+        <p>Recommendation Letter Ratings:</p>
+        <p>Score of Recommendation Letter 1:<input type="number" placeholder= "Score "name = "reviewerScore1" min = 1 max = 5></p>
+        <p>From:<input type = "text" name="refFrom1"></p>
+        <!-- <input type="text" placeholder="Generic" name="isGeneric">-->
+        <p><label for = "isGeneric1">Generic:</label>
+            <select name="isGeneric1" id="isGeneric1">
+                <option value = "1">Yes</option>
+                <option value = "0">No</option>
+            </select></p>
+        <!-- <input type="text" placeholder="Credible" name="isCredible"> -->
+        <p> <label for = "isCredible1">Credible:</label>
+            <select name="isCredible1" id="isCredible1">
+                <option value = "1">Yes</option>
+                <option value = "0">No</option>
+            </select></p>
+
+        <p>Score of Recommendation Letter 2:<input type="number" placeholder= "Score "name = "reviewerScore2" min = 1 max = 5></p>
+        <p>From:<input type = "text" name="refFrom2"></p>
+        <!-- <input type="text" placeholder="Generic" name="isGeneric">-->
+        <p><label for = "isGeneric2">Generic:</label>
+            <select name="isGeneric2" id="isGeneric2">
+                <option value = "1">Yes</option>
+                <option value = "0">No</option>
+            </select></p>
+        <!-- <input type="text" placeholder="Credible" name="isCredible"> -->
+        <p> <label for = "isCredible2">Credible:</label>
+            <select name="isCredible2" id="isCredible2">
+                <option value = "1">Yes</option>
+                <option value = "0">No</option>
+            </select></p>
+
+        
+        <p>Score of Recommendation Letter 3:<input type="number" placeholder= "Score "name = "reviewerScore3" min = 1 max = 5></p>
+        <p>From:<input type = "text" name="refFrom3"></p>
+        <!-- <input type="text" placeholder="Generic" name="isGeneric">-->
+        <p><label for = "isGeneric3">Generic:</label>
+            <select name="isGeneric3" id="isGeneric3">
+                <option value = "1">Yes</option>
+                <option value = "0">No</option>
+            </select></p>
+        <!-- <input type="text" placeholder="Credible" name="isCredible"> -->
+        <p> <label for = "isCredible3">Credible:</label>
+            <select name="isCredible3" id="isCredible3">
+                <option value = "1">Yes</option>
+                <option value = "0">No</option>
+            </select></p>
+
+
+
+        Reasons for Reject: (A =Incomplete Record, B= Does not meet minimum Requirements,   C= Problems with Letters, D= Not competitive, E= Other reasons)
+        <p><label for = "deficiency">Deficiency: </label>
+            <select name="deficiency" id="deficiency">
+                <option value = "A">A</option>
+                <option value = "B">B</option>
+                <option value = "C">C</option>
+                <option value = "D">D</option>
+                <option value = "E">E</option>
+                <option value = "N/A">N/A</option>
+            </select></p>
+        <p>Rating:<input type="number" placeholder= "rating "name = "rating" min = 1 max = 4></p>
+        <p>(1) reject, (2) borderline (to mean they are not certain),  (3) admit without aid, (4) admit with aid</p>
+        <!-- Reviewer can add comments -->
+        <p>Comments: <input type= "text" name = "commenting" maxlength="40"></br></p>
+        <input type= "submit" submit = "submit"><br>
+    </form> 
+       
+    {% endif %}
+</body>
+</html>

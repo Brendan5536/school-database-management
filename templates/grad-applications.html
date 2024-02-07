@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View Graduation Applications</title>
+	<style>
+		table, th, td {
+		  border: 1px solid black;
+		  border-collapse: collapse;
+		}
+		th, td {
+		  padding: 5px;
+		  text-align: left;
+		}
+	</style>
+</head>
+<body>
+	<h1>Graduation Applications</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Student ID</th>
+				<th>Graduating Degree</th>
+				<th>Application Date</th>
+				<th>Graduating Status</th>
+				<th>Thesis</th>
+				<th>Met Requirements</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for grad_application in grad_applications %}
+				<tr>
+					<td>{{ grad_application['student_id'] }}</td>
+					<td>{{ grad_application['graduating_degree'] }}</td>
+					<td>{{ grad_application['application_date'] }}</td>
+					<td>{{ grad_application['graduating_status'] }}</td>
+					<td>{{ grad_application['thesis'] }}</td>
+					<td>{{ 'Yes' if grad_application['met_requirements'] else 'No' }}</td>
+					<td><a href="/approve-grad-application/{{ grad_application['student_id'] }}">Approve</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</body>
+</html>

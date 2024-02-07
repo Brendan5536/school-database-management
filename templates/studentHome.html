@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 mt-5">
+                <div class="text-center">
+                    <h1>Welcome, {{ session.fname }}!</h1>
+                    <p>User ID: {{session['fname']}}</p>
+
+                    <form action="/logout" method="POST" class="mb-4">
+                        <button type="submit" class="btn btn-danger">Logout</button>
+                    </form>
+
+                    <h2>Student Dashboard</h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <form method="GET" action="/student_info">
+                                <button type="submit" class="btn btn-primary btn-block">View Personal Information</button>
+                            </form>
+                        </li>
+                        <li class="mb-3">
+                            <form method="GET" action="/c_catalogue">
+                                <button type="submit" class="btn btn-primary btn-block">Course Catalogue</button>
+                            </form>
+                        </li>
+                        <li class="mb-3">
+                            <form method="GET" action="/c_registered">
+                                <button type="submit" class="btn btn-primary btn-block">Registered Courses</button>
+                            </form>
+                        </li>
+                        <li class="mb-3">
+                            <form method="GET" action="/transcript">
+                                <button type="submit" class="btn btn-primary btn-block">View Transcript</button>
+                            </form>
+                        </li>
+                        <li class="mb-3">
+                            <form method="GET" action="/form1">
+                                <button type="submit" class="btn btn-primary btn-block">Submit Form 1</button>
+                            </form>
+                        </li>
+                        <li class="mb-3">
+                            <form method="GET" action="/talk">
+                                <button type="submit" class="btn btn-primary btn-block">Talk to College Advisor</button>
+                            </form>
+                        </li>
+                        <li>
+                            <form method="GET" action="/apply-graduation">
+                                <button type="submit" class="btn btn-primary btn-block">Apply for Graduation</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Required for Bootstrap's JavaScript plugins -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

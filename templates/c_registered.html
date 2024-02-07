@@ -1,0 +1,38 @@
+<html>
+
+<body>
+    <h1>Course Registered</h1>
+    <a href = '/student'><button>Home</button></a>
+    <br />
+    <br />
+    {% if catalogue == None %}
+        <h3>Nothing Registered yet</h3>
+    {% else %}
+        <table>
+        <tr>
+            <th>CourseID</th>
+            <th>DEPT</th>
+            <th>Course Number</th>
+            <th>Title</th>
+            <th>Credit Hour</th>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Instructor Name </th>
+        </tr>
+        {% for course in catalogue %}
+            <tr>
+                <th>{{catalogue[course]['cid']}}</th>
+                <th>{{catalogue[course]['dept']}}</th>
+                <th>{{catalogue[course]['cnum']}}</th>
+                <th>{{catalogue[course]['title']}}</th>
+                <th>{{catalogue[course]['cred']}}</th>
+                <th>{{catalogue[course]['cDay']}}</th>
+                <th>{{catalogue[course]['cTime']}}</th>
+                <th>{{catalogue[course]['ins_name']}}</th>
+                <th><a href = '/drop/{{catalogue[course]['cid']}}'><button>Drop</button></a></th>
+            </tr>
+        {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

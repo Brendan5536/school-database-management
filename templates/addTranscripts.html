@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<h1>
+    Manage transcripts
+</h1>
+<table>
+    <tr>
+        <td>Applicant Name</td>
+        <td>Confirm Transcript Recieved</td>
+    </tr>
+    {% for applicant in applicants %}
+        <tr>
+            <td>{{applicant['fname']}} {{applicant['lname']}}</td>
+
+            <td>
+                <form action = '/GS/addTranscripts' method = 'POST'>
+                    <input type="hidden" name="id" value="{{applicant['UserID']}}">
+                    <input type='submit' value='Confirm Transcript'>
+                </form>
+            </td>
+
+        </tr>
+    {% endfor %}
+</table>
+<a href="/GS">Back</a>    
+</html>

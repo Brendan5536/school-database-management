@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<h1>
+    Make Decisions
+</h1>
+<table>
+    <tr>
+        <td>Applicant Name</td>
+        <td>View Applicant</td>
+    </tr>
+    {% for applicant in applicants %}
+        <tr>
+            <td>{{ applicant['fName'] }} {{ applicant['lName'] }}</td>
+
+            <td>
+                <a href="/GS/{{applicant['IDapp']}}">View Applicant</a>
+            </td>
+
+        </tr>
+    {% endfor %}
+</table>
+<a href="/GS">Back</a>
+</html>

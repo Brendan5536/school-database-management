@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Add Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/apply-grad.css">
+    <title>Apply for Graduation - School Management System</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="landing-page.html">School Management System</a>
+        </div>
+    </nav>
+</header>
+<main>
+    <section class="apply-grad">
+        <div class="container">
+            <h2>Apply for Graduation</h2>
+            {% if error %}
+                <br>
+                <div class="alert alert-danger" role="alert">
+                    ERROR: Requirements are not met for application
+                </div>
+                <br>
+            {% endif %}
+            <form method="post" action="{{ url_for('apply_graduation') }}">
+                <div class="form-group">
+                    <label for="id-input">Enter your student ID:</label>
+                    <input type="text" id="id-input" name="student_id" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="degree-select">Select your degree:</label>
+                    <select id="degree-select" name="graduation_degree" class="form-control">
+                        <option value="0">MS</option>
+                        <option value="1">PhD</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="major-select">Select your major:</label>
+                    <select id="major-select" name="major" class="form-control">
+                        <option value="Business">Business</option>
+                        <option value="CS">CS</option>
+                        <option value="Biology">Biology</option>
+                        <option value="French">French</option>
+                        <option value="IA">IA</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="thesis-input">Enter your thesis:</label>
+                    <textarea id="thesis-input" name="thesis" class="form-control" required></textarea>
+                </div>
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </form>
+        </div>
+    </section>
+</main>
+<!-- Add jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

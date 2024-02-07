@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+{% if 'userID' in session %}
+<head>
+    <title>Faculty</title>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>Welcome, {{ session.fname }} {{ session.lname }}!</h1>
+            </div>
+            <div class="col-md-4 text-right">
+                <form action="/logout" method="POST" class="mt-2">
+                    <button type="submit" class="btn btn-danger btn-lg">Logout</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row my-4">
+            <div class="col-md-12">
+                <div class="d-flex flex-wrap justify-content-center">
+                    <form action="/pickstudent" method="GET" class="mb-2 mx-2">
+                        <button class="btn btn-primary">Choose an Advisee</button>
+                    </form>
+
+                    <form action="/AssignGrades" method="GET" class="mb-2 mx-2">
+                        <button class="btn btn-primary">Assign Grades</button>
+                    </form>
+
+                    <div class="mb-2 mx-2">
+                        <button type="button" class="btn btn-primary">
+                            <a href='/faculty/applications' class="text-white">Review Applications</a>
+                        </button>
+                    </div>
+
+                    <form action="/form1s" method="GET" class="mb-2 mx-2">
+                        <button type="submit" class="btn btn-primary">Go to Form 1's</button>
+                    </form>
+
+                    <form method="GET" action="/staff_info" class="mb-2 mx-2">
+                        <button class="btn btn-primary">
+                            View Personal Information
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Search Student Transcript</h3>
+                <form action="/transcriptSearch" method="POST" class="my-4">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="userID">User ID:</label>
+                            <input type="text" id="userID" name="userID" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="lname">Last Name:</label>
+                            <input type="text" id="lname" name="lname" class="form-control">
+                        </div>
+                    </div>
+                    <input type="submit" value="Search" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Add jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+{% endif %}
+</html>

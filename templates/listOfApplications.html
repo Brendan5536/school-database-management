@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pending Applications</title>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    {% if 'userID' in session %}
+    <div class="container">
+        <h1>Pending Applications:</h1>
+        
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <button class="btn btn-primary" type="button"><a class="text-white" href="/faculty">Return to Home page</a></button>
+            </div>
+        </div>
+        
+        <form action="/search" method="POST">
+            <div class="form-group">
+                <label for="IDapp">Search for Application:</label>
+                <input type="text" class="form-control" id="IDapp" name="IDapp">
+            </div>
+            <input class="btn btn-primary" type="submit" value="submit">
+        </form>
+        
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Application ID</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for apps in apps %}
+                        <tr>
+                            <td>{{ apps.IDapp }}</td>
+                            <td>
+                                <button class="btn btn-primary" type="button"><a class="text-white" href="/faculty/applications/{{ apps.IDapp }}">Review Application</a></button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- Add jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

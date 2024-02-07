@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<h1>
+    Manage Users
+</h1>
+<body>
+    <table>
+    <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Email</td>
+        <td>Manage User</td>
+        <td>Delete User</td>
+    </tr>
+    {% for user in users %}
+        <tr>
+            <td>{{user['fName']}}</td>
+            <td>{{user['lName']}}</td>
+            <td>{{user['email']}}</td>
+            <td>
+                <a href="{{url_for('adminView', userData=user['email'])}}" class="w3-bar-item w3-button">Looking at the user</a>
+            </td>
+            <form action="/sysadmin/manage" method='POST'>
+                <input type='hidden' name="userEmail" value="{{user['email']}}">
+                <td>
+                    <input type='submit' value='Delete'>
+                </td>
+            </form>
+        </tr>
+    {% endfor %}
+    </table>
+</body>
+<h1>
+{% with messages = get_flashed_messages() %}
+      {% if messages %}
+
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+
+      {% endif %}
+    {% endwith %}
+</h1>
+<a href="/sysadmin" class="w3-bar-item w3-button">Return home</a>
+</html>

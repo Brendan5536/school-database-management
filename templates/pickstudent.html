@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pick a Student</title>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Pick a Student</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <form method="POST" action="/assignadvisor">
+            <div class="form-group">
+              <label for="studentSelect">Select a student:</label>
+              <select class="form-control" id="studentSelect" name="student">
+                {% for student in students %}
+                  <option value="{{ student[0] }}">{{ student[3] }} {{ student[4] }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="advisorSelect">Select an advisor:</label>
+              <select class="form-control" id="advisorSelect" name="advisor">
+                {% for advisor in advisors %}
+                  <option value="{{ advisor[0] }}">{{ advisor[3] }} {{ advisor[4] }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Assign Advisor</button>
+          </form>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-12">
+          <form action="/faculty" method="GET">
+            <button class="btn btn-secondary">Return to Home</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Add jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Applicant</title>
+  <!-- Add Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #F8F9FA;
+    }
+    h1, h2, p {
+      text-align: center;
+      color: #007BFF;
+      font-weight: bold;
+    }
+    .container {
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  {% if 'userID' in session %}
+  <div class="container">
+    <h1>Welcome, applicant {{session["fname"]}}!</h1>
+    <h2>UserID: {{session["userID"]}}</h2>
+    <form action="/logout" method="POST">
+      <button type="submit" class="btn btn-primary btn-block">Logout</button>
+    </form>
+    <form method="GET" action="/applicant_info">
+      <button type="submit" class="btn btn-primary btn-block">View Personal Information</button>
+    </form>
+    <br>
+    <div class="row">
+      <div class="col-md-6">
+        <a href="/applications/new/doctoral" class="btn btn-primary btn-block">Start New PHD Application</a>
+      </div>
+      <div class="col-md-6">
+        <a href="/applications/new/masters" class="btn btn-primary btn-block">Start New Masters Application</a>
+      </div>
+    </div>
+    <br>
+    {% for i,k in all %}
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">ID: {{i["IDapp"]}}</h3>
+        <p class="card-text">Status: {{status}}</p>
+        <ul>
+          <li>GRE Required: {{k}}</li>
+          <li>GRE Included: {{i["GREIncluded"]}}</li>
+          <li>Transcript Received: {{i["transcriptReceived"]}}</li>
+          <li>References Received: {{i["isReferenced"]}}</li>
+          <li>Reviews Received: {{i["isReviewed"]}}</li>
+          <li>Final Decision decided: {{i["finaldecisionreceived"]}}</li>
+        </ul>
+        {% if i["sendTranscript"] %}
+        <form action='/applicant/emailTranscript/{{i["IDapp"]}}' method='POST'>
+          <button type="submit" class="btn btn-primary"> Email Transcript</button>
+        </form>
+        {% endif %}
+        {% if i["finaldecisionreceived"] %}
+        <a href='/openDecision' class="btn btn-primary">Click here to View Decision</a>
+        {% endif %}
+      </div>
+    </div>
+    <br>
+    {% endfor %}
+  </div>
+  {% endif %}
+  <!-- Add Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

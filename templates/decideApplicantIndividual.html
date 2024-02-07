@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<h1>Final Decision</h1>
+
+    <p>Name: {{app["lName"]}}, {{app['fName']}}</p>
+    <p>Student Number: {{app['UserID']}} </p>
+    <p>Student Application ID: {{app['applicationID']}}</p>
+    <p>Semester and Year of Application: {{app['admissionSem']}} {{app['admissionYr']}} </p>
+    <p>Applying for Degree: {{app['degreeSought']}}</p>
+    <p>Summary of Credentials</p>
+    <p>GRE  Verbal:{{gre['Verbal']}}     Quantitative:{{gre['Quantitative']}} </p>
+    <p>Year of Exam:{{gre['examYear']}} </p>
+    <p>GRE Score:{{gre['GREScore']}}  GRE Advanced Score: {{gre['GREAdvScore']}}    Subject: {{gre['GREAdvSbj']}}   </p>
+    <p>TOEFL Score:{{gre['TOEFL']}}         Date of Exam:{{gre['TOEFLDate']}}    </p>
+    <p>Prior Degrees</p>
+    <p>Degree: {{app['DegreeType']}}     GPA:{{app['GPA']}}      Major: {{app['Major']}}    Year:{{app['priorYear']}}   University:{{app['University']}}   </p>
+    <p>Areas of Interest: {{app['interests']}}</p>
+    <p>Experience: {{app['priorWorkExperience']}} </p>
+
+    <br>
+    <h1>Reviews:</h1>
+    <body>
+      {% for info in information %}
+        <li>Reviewer Name: {{info['reviewerName']}}</li>
+        <li>Reviewer Score: {{info['reviewerScore']}}</li>
+        <li>IS Generic: {{info['isGeneric']}}</li>
+        <li>Is Credible: {{info['isCredible']}}</li>
+        <li>Deficiency Score: {{info['deficiency']}}</li>
+        <li>Comments: {{info['commenting']}}</li>
+        <br>
+      {% endfor %}
+        <form action="/GS/{{userI}}" method="POST">
+            <!--<input type="text" name="decision">-->
+            <p><label for = "decision">Decision: </label>
+              <select name="decision" id="decision">
+                  <option value = "0">Reject</option>
+                  <option value = "1">Admit </option>
+                  <option value = "1">Admit with Aid</option>
+              </select></p>
+            Reason For decision<br>
+            <input type="text" name="reason"><br>
+            Admission Date:<br>
+            <input type = "text" name = "admissionDate"><br>
+            Recommended Advisor: <br>
+            <input type = "text" name = "recommendedAdvisor"><br>
+            <input type="submit" value="submit">
+        </form>
+    </body>
+    <a href="/GS/decide">Back</a>
+</html>
